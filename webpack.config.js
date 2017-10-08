@@ -8,9 +8,8 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({
-            title: 'Code Splitting',
-        }),
-        new BundleAnalyzerPlugin(),
+            title: 'Lazy Loading',
+        })
     ],
     output: {
         filename: '[name].bundle.js',
