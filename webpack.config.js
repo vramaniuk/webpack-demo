@@ -1,19 +1,30 @@
 const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        index: './src/index.js',
-    },
+         main: './src/index.js',
+         vendor: [
+           'lodash'
+         ]
+   },
     plugins: [
-        new HTMLWebpackPlugin({
-            title: 'Lazy Loading',
-        })
+        new CleanWebpackPlugin(['dist']),
+        new HtmlWebpackPlugin({
+            title: 'Caching',
+        }),
+        new webpack.HashedModuleIdsPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'runtime',
+        }),
     ],
     output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].bundle.js',
+        filename: '[name].[chunkhash].js',
         path: path.resolve(__dirname, 'dist'),
     },
 };
