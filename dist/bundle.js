@@ -65,14 +65,31 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 function greeter(person) {
+
+    console.log([12, 34, 56].reduce(function (p, c) {
+        return p + c;
+    }));
+
     return "Hello, " + person;
 }
-const user = "Victor User";
+var user = "Victor User!!";
 
 document.body.innerHTML = greeter(user);
+(function foo() {
+    var _ref = [1, 2, 3],
+        a = _ref[0],
+        b = _ref[2];
+
+    return function () {
+        return console.log(a, b);
+    };
+})()();
 
 /***/ })
 /******/ ]);
