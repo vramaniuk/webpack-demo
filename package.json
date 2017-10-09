@@ -5,7 +5,7 @@
   "main": "dist/webpack-numbers.js",
   "module": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --inline --hot --progress",
+    "start": "webpack --env.NODE_ENV=local --env.production --progress",
     "build": "webpack"
   },
   "repository": {
